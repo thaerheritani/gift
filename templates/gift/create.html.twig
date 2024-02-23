@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Gift{% endblock %}
+
+
+{% block body %}
+	{% include 'shared/nav.html.twig' %}
+
+	<div class="container">
+		<h1 class="my-4 text-center">Create Gift</h1>
+
+		<div class="row">
+			<div class="col-md-6 mx-auto">
+				{{ form_start(form) }}
+				<div class="mb-3">
+					{{ form_label(form.name, 'Name', {'label_attr': {'class': 'form-label'}}) }}
+					{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="mb-3">
+					{{ form_label(form.price, 'Price', {'label_attr': {'class': 'form-label'}}) }}
+					{{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="mb-3">
+					{{ form_label(form.link, 'Link', {'label_attr': {'class': 'form-label'}}) }}
+					{{ form_widget(form.link, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="mb-3">
+					{{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+					{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

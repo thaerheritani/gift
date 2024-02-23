@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des groupes{% endblock %}
+
+{% block body %}
+	{% include 'shared/nav.html.twig' %}
+
+	<div class="container">
+		<h1 class="text-center m-4">Mes groupes</h1>
+		<ul class="list-group">
+			{% for group in groups %}
+				<li class="list-group-item">
+					{{ group.name }}
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les Cadeaux{% endblock %}
+
+{% block body %}
+	{% include 'shared/nav.html.twig' %}
+
+	<div class="container text-center">
+		<h1>les Cadeaux</h1>
+		<div class="row">
+			{% for gift in gifts %}
+				<div class="col-md-4">
+					<div class="card mb-3">
+						<div class="card-body">
+							<h5 class="card-title">{{ gift.name }}</h5>
+							<p class="card-text"><strong>Prix :</strong> {{ gift.price }}</p>
+							<p class="card-text"><strong>Lien :</strong> <a href="{{ gift.link }}" target="_blank">{{ gift.getLink() }}</a></p>
+							<p class="card-text"><strong>Description :</strong> {{ gift.description }}</p>
+							{% if gift.getUser() == app.user %}
+								<form action="{{ path('gift_edit', {'id': gift.id}) }}" method="GET" style="display: inline;">
+									<button type="submit" class="btn btn-primary">Modifier</button>
+								</form>
+								<form action="{{ path('gift_delete', {'id': gift.id}) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce cadeau ?');" style="display: inline;">
+									<input type="hidden" name="_method" value="DELETE">
+									<button type="submit" class="btn btn-danger">Supprimer</button>
+								</form>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
